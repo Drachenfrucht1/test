@@ -20,6 +20,9 @@ jobs:
                 - name: Move docs
                   run: mv docs/*.md gh-pages/
 
+                - name: Set git identity
+                  run: git config --global user.name "Doc update action" && git config --global user.email "admin@drachenfrucht1.de"
+
                 - name: Create commit
                   run: git add . && git commit -m "Update docs"
                   working-directory: gh-pages
