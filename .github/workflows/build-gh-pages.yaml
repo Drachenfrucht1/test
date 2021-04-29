@@ -22,7 +22,7 @@ jobs:
 
                 - name: Create commit
                   run: git add . && git commit -m "Update docs"
-                  working-directoy: gh-pages
+                  working-directory: gh-pages
 
                 - name: Push
                   run: git push origin
