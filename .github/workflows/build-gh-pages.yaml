@@ -1,0 +1,29 @@
+name: Upload gh pages
+on:
+        push:
+                branches:
+                - master
+jobs:
+        build:
+                runs-on: ubuntu-latest
+                steps:
+                - uses: actions/checkout@v2
+                
+                - uses: actions/checkout@v2
+                  with:
+                          path: gh-pages
+                          ref: gh-pages
+
+                - name: Parse docs
+                  run: python3 doc_parse.py
+
+                - name: Move docs
+                  run: mv docs/*.md gh-pages/
+
+                - name: Create commit
+                  run: git add . && git commit -m "Update docs"
+                  working-directoy: gh-pages
+
+                - name: Push
+                  run: git push origin
+                  working-directory: gh-pages
